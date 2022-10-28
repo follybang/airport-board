@@ -3,14 +3,14 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["airbnb", ["airbnb", "airbnb/hooks"]],
+  extends: 'airbnb-base',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 14,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  plugins: ["react"],
+  plugins: ['react'],
   rules: {},
 };
