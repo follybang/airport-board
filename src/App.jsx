@@ -7,8 +7,10 @@ function App() {
   return (
     <div className="page">
       <Header />
-      <SearchFlight />
-      <FlightsBoard />
+      <div className="main">
+        <SearchFlight />
+        <FlightsBoard />
+      </div>
     </div>
   );
 }

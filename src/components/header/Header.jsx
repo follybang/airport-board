@@ -5,7 +5,7 @@ function Header() {
   return (
     <header className="header">
       <div className="container">
-        <span class="material-symbols-outlined header__icon">
+        <span className="material-symbols-outlined header__icon">
           connecting_airports
         </span>
         <span className="header__text">

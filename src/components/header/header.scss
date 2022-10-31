@@ -2,7 +2,11 @@
   height: 92px;
   background: #1eb7ee;
   display: flex;
-  box-shadow: 0px 10px 18px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgb(37 40 41 / 30%);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
 
   &__icon {
     font-size: 80px;

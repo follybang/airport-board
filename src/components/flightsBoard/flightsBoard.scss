@@ -1,0 +1,121 @@
+.flights-board {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  height: 80px;
+  background-color: #1eb7ee;
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+}
+
+.btn {
+  display: flex;
+  text-decoration: none;
+  width: 40%;
+  background: #1eb7ee;
+  transition: 0.3s;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 24px;
+
+  & span {
+    margin: auto;
+    background-color: transparent;
+  }
+
+  &_selected {
+    width: 60%;
+    font-size: 34px;
+    font-weight: 700;
+    background: #fff;
+    border-top-right-radius: 78px;
+    border-top-left-radius: 78px;
+    color: #1eb7ee;
+    border: 3px white solid;
+  }
+}
+
+.date-container {
+  background-color: #fff;
+  padding-top: 20px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.date-selector {
+  background-color: #1eb7ee;
+  padding: 15px;
+  color: #fff;
+  font-family: 'Orbitron';
+  font-size: 18px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  user-select: none;
+}
+
+::-webkit-calendar-picker-indicator {
+  background-color: #fff;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.table {
+  background-color: white;
+  padding-top: 20px;
+  width: 100%;
+
+  border-collapse: collapse;
+  table-layout: fixed;
+  &__body tr {
+    &:nth-child(odd) {
+      background-color: rgba(0, 102, 135, 0.1);
+    }
+  }
+}
+
+th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  opacity: 60%;
+  font-weight: 500;
+  font-size: 18px;
+  &:nth-child(1) {
+    width: 12%;
+  }
+  &:nth-child(2) {
+    width: 13%;
+  }
+  &:nth-child(3) {
+    width: 15%;
+  }
+  &:nth-child(4) {
+    width: 20%;
+  }
+}
+
+td {
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+tr {
+  height: 70px;
+}
+
+.no-flights {
+  color: red;
+  opacity: 0.6;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+}
