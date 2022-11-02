@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import moment from 'moment';
 import './flightsBoard.scss';
+import { loadFlightsData } from '../../flights.actions.js';
 
 function FlightsBoard() {
   const [departuresSelected, changeSelected] = useState(true);
+
+  useEffect(() => {
+    loadFlightsData(moment(new Date('2022-01-11')).format('D-MM-YYYY'));
+  }, []);
 
   const noFlights = (
     <tr>

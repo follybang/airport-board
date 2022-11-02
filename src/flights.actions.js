@@ -1,3 +1,5 @@
+import { fetchFlightsData } from './flightsGateway';
+
 export const DATA_RECEIVED = 'FLIGHTS/DATA_RECEIVED';
 
 export const dataReceived = flightsData => {
@@ -7,4 +9,10 @@ export const dataReceived = flightsData => {
   };
 };
 
-export const 
+export const loadFlightsData = selectedDate => {
+  return function (dispatch) {
+    fetchFlightsData(selectedDate).then(flightsData =>
+      dispatch(dataReceived(flightsData.body)),
+    );
+  };
+};
