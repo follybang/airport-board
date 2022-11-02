@@ -8,7 +8,7 @@ function FlightsBoard() {
   const [departuresSelected, changeSelected] = useState(true);
 
   useEffect(() => {
-    loadFlightsData(moment(new Date('2022-01-11')).format('D-MM-YYYY'));
+    loadFlightsData();
   }, []);
 
   const noFlights = (
