@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import moment from 'moment';
+import { connect } from 'react-redux';
 import './flightsBoard.scss';
-import { loadFlightsData } from '../../flights.actions.js';
+import { getFlightsData } from '../../flights.actions.js';
+import FlightInfo from './FlightInfo.jsx';
+import {
+  departuresListSelector,
+  arrivalsListSelector,
+} from '../../flights.selectors';
 
-function FlightsBoard() {
+const FlightsBoard = ({ getFlightsData, arrivalsList, departuresList }) => {
   const [departuresSelected, changeSelected] = useState(true);
 
   useEffect(() => {
-    loadFlightsData();
+    getFlightsData();
   }, []);
 
   const noFlights = (
@@ -71,15 +76,36 @@ function FlightsBoard() {
           <tbody className="table__body">
             <Switch>
               <Route exact path="/">
-                {noFlights}
+                {departuresList.length === 0
+                  ? noFlights
+                  : departuresList.map(flightData => (
+                      <FlightInfo key={flightData.ID} flightData={flightData} />
+                    ))}
               </Route>
-              <Route path="/arrivals">{noFlights}</Route>
+              <Route path="/arrivals">
+                {arrivalsList.length === 0
+                  ? noFlights
+                  : arrivalsList.map(flightData => (
+                      <FlightInfo key={flightData.ID} flightData={flightData} />
+                    ))}
+              </Route>
             </Switch>
           </tbody>
         </table>
       </div>
     </BrowserRouter>
   );
-}
+};
 
-export default FlightsBoard;
+const mapState = state => {
+  return {
+    departuresList: departuresListSelector(state),
+    arrivalsList: arrivalsListSelector(state),
+  };
+};
+
+const mapDispatch = {
+  getFlightsData,
+};
+
+export default connect(mapState, mapDispatch)(FlightsBoard);

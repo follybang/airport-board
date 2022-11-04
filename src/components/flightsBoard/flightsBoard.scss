@@ -111,6 +111,38 @@ tr {
   height: 70px;
 }
 
+.logo {
+  height: 40px;
+  margin-right: 10px;
+
+  &__image {
+    height: 100%;
+  }
+}
+
+.company-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 70px;
+}
+
+.terminal span {
+  display: inline-block;
+  font-weight: bold;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #63c745;
+  border-radius: 50%;
+  color: #63c745;
+  line-height: 38px;
+}
+
+.d-term {
+  border: 1px solid #1eb7ee !important;
+  color: #1eb7ee !important;
+}
+
 .no-flights {
   color: red;
   opacity: 0.6;

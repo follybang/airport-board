@@ -1,18 +1,18 @@
 import { fetchFlightsData } from './flightsGateway';
 
-export const DATA_RECEIVED = 'FLIGHTS/DATA_RECEIVED';
+export const FLIGHTS_DATA_RECEIVED = 'FLIGHTS/FLIGHTS_DATA_RECEIVED';
 
-export const dataReceived = flightsData => {
+export const flightsDataReceived = flightsData => {
   return {
-    type: DATA_RECEIVED,
+    type: FLIGHTS_DATA_RECEIVED,
     payload: flightsData,
   };
 };
 
-export const loadFlightsData = () => {
+export const getFlightsData = () => {
   return function (dispatch) {
     fetchFlightsData().then(flightsData =>
-      dispatch(dataReceived(flightsData.body)),
+      dispatch(flightsDataReceived(flightsData.body)),
     );
   };
 };

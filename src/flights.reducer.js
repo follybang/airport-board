@@ -1,4 +1,4 @@
-import { DATA_RECEIVED } from './flights.actions.js';
+import { FLIGHTS_DATA_RECEIVED } from './flights.actions.js';
 
 const initState = {
   flightsData: [],
@@ -6,7 +6,7 @@ const initState = {
 
 const flightsReducer = (state = initState, action) => {
   switch (action.type) {
-    case DATA_RECEIVED: {
+    case FLIGHTS_DATA_RECEIVED: {
       return {
         ...state,
         flightsData: action.payload,

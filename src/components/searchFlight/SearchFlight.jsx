@@ -1,7 +1,7 @@
 import React from 'react';
 import './searchFlight.scss';
 
-function SearchFlight() {
+const SearchFlight = () => {
   return (
     <div className="search-flight">
       <h1 className="search-flight__title">SEARCH FLIGHT</h1>
@@ -21,6 +21,6 @@ function SearchFlight() {
       </div>
     </div>
   );
-}
+};
 
 export default SearchFlight;
