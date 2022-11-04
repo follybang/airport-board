@@ -9,9 +9,9 @@ export const flightsDataReceived = flightsData => {
   };
 };
 
-export const getFlightsData = () => {
+export const getFlightsData = selectedDate => {
   return function (dispatch) {
-    fetchFlightsData().then(flightsData =>
+    fetchFlightsData(selectedDate).then(flightsData =>
       dispatch(flightsDataReceived(flightsData.body)),
     );
   };

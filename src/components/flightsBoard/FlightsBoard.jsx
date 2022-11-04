@@ -8,13 +8,24 @@ import {
   departuresListSelector,
   arrivalsListSelector,
 } from '../../flights.selectors';
+import moment from 'moment';
+
+const date = moment(new Date(2022, 1, 11)).format('D-MM-YYYY');
 
 const FlightsBoard = ({ getFlightsData, arrivalsList, departuresList }) => {
   const [departuresSelected, changeSelected] = useState(true);
+  const [selectedDate, setDate] = useState(
+    moment(new Date()).format('D-MM-YYYY'),
+  );
 
   useEffect(() => {
-    getFlightsData();
+    getFlightsData(selectedDate);
   }, []);
+
+  const handleDateChange = event => {
+    setDate(moment(new Date(event.target.value)).format('D-MM-YYYY'));
+    getFlightsData(selectedDate);
+  };
 
   const noFlights = (
     <tr>
@@ -59,7 +70,12 @@ const FlightsBoard = ({ getFlightsData, arrivalsList, departuresList }) => {
       <div className="flights-board">
         {buttons}
         <div className="date-container">
-          <input type="date" className="date-selector" />
+          <input
+            type="date"
+            className="date-selector"
+            defaultValue={moment(new Date()).format('YYYY-MM-DD')}
+            onChange={handleDateChange}
+          />
         </div>
 
         <table className="table">
