@@ -10,8 +10,6 @@ import {
 } from '../../flights.selectors';
 import moment from 'moment';
 
-const date = moment(new Date(2022, 1, 11)).format('D-MM-YYYY');
-
 const FlightsBoard = ({ getFlightsData, arrivalsList, departuresList }) => {
   const [departuresSelected, changeSelected] = useState(true);
   const [selectedDate, setDate] = useState(
@@ -24,7 +22,6 @@ const FlightsBoard = ({ getFlightsData, arrivalsList, departuresList }) => {
 
   const handleDateChange = event => {
     setDate(moment(new Date(event.target.value)).format('D-MM-YYYY'));
-    getFlightsData(selectedDate);
   };
 
   const noFlights = (
@@ -69,13 +66,20 @@ const FlightsBoard = ({ getFlightsData, arrivalsList, departuresList }) => {
     <BrowserRouter>
       <div className="flights-board">
         {buttons}
-        <div className="date-container">
+        <div className="date">
           <input
             type="date"
-            className="date-selector"
+            className="date__input"
             defaultValue={moment(new Date()).format('YYYY-MM-DD')}
             onChange={handleDateChange}
           />
+
+          <button
+            className="date__submit"
+            onClick={() => getFlightsData(selectedDate)}
+          >
+            Search by date
+          </button>
         </div>
 
         <table className="table">

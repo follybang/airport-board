@@ -40,24 +40,35 @@
   }
 }
 
-.date-container {
+.date {
   background-color: #fff;
   padding-top: 20px;
   height: 60px;
   display: flex;
   justify-content: center;
-}
 
-.date-selector {
-  background-color: #1eb7ee;
-  padding: 15px;
-  color: #fff;
-  font-family: 'Orbitron';
-  font-size: 18px;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  user-select: none;
+  &__input {
+    background-color: #1eb7ee;
+    padding: 15px;
+    color: #fff;
+    font-family: 'Orbitron';
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    user-select: none;
+  }
+
+  &__submit {
+    margin-left: 10px;
+    border: none;
+    background: #1eb7ee;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 20px;
+    padding: 0 10px;
+    cursor: pointer;
+  }
 }
 
 ::-webkit-calendar-picker-indicator {
