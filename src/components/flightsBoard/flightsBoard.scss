@@ -46,36 +46,19 @@
   height: 60px;
   display: flex;
   justify-content: center;
-
-  &__input {
-    background-color: #1eb7ee;
-    padding: 15px;
-    color: #fff;
-    font-family: 'Orbitron';
-    font-size: 18px;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-    user-select: none;
-  }
-
-  &__submit {
-    margin-left: 10px;
-    border: none;
-    background: #1eb7ee;
-    color: #fff;
-    font-weight: 500;
-    border-radius: 20px;
-    padding: 0 10px;
-    cursor: pointer;
-  }
+  align-items: center;
 }
 
-::-webkit-calendar-picker-indicator {
-  background-color: #fff;
-  padding: 4px;
-  cursor: pointer;
-  border-radius: 20px;
+.custom-input {
+  width: 200px;
+  height: 40px;
+  background-color: #1eb7ee;
+  border: none;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 20px;
+  font-family: 'Orbitron', sans-serif;
+  line-height: 40px;
 }
 
 .table {

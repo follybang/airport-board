@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './flightsBoard.scss';
@@ -9,19 +9,19 @@ import {
   arrivalsListSelector,
 } from '../../flights.selectors';
 import moment from 'moment';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const FlightsBoard = ({ getFlightsData, arrivalsList, departuresList }) => {
   const [departuresSelected, changeSelected] = useState(true);
-  const [selectedDate, setDate] = useState(
-    moment(new Date()).format('D-MM-YYYY'),
-  );
+  const [selectedDate, setDate] = useState(new Date());
 
   useEffect(() => {
-    getFlightsData(selectedDate);
-  }, []);
+    getFlightsData(moment(selectedDate).format('D-MM-YYYY'));
+  }, [selectedDate]);
 
-  const handleDateChange = event => {
-    setDate(moment(new Date(event.target.value)).format('D-MM-YYYY'));
+  const handleDateChange = date => {
+    setDate(date);
   };
 
   const noFlights = (
@@ -31,6 +31,12 @@ const FlightsBoard = ({ getFlightsData, arrivalsList, departuresList }) => {
       </td>
     </tr>
   );
+
+  const CustomInput = forwardRef(({ value, onClick }, ref) => (
+    <button className="custom-input" onClick={onClick} ref={ref}>
+      {value}
+    </button>
+  ));
 
   const buttons = departuresSelected ? (
     <div className="buttons">
@@ -67,19 +73,14 @@ const FlightsBoard = ({ getFlightsData, arrivalsList, departuresList }) => {
       <div className="flights-board">
         {buttons}
         <div className="date">
-          <input
-            type="date"
-            className="date__input"
-            defaultValue={moment(new Date()).format('YYYY-MM-DD')}
-            onChange={handleDateChange}
-          />
-
-          <button
-            className="date__submit"
-            onClick={() => getFlightsData(selectedDate)}
-          >
-            Search by date
-          </button>
+          <div className="date__container">
+            <DatePicker
+              dateFormat="dd/MM/yyyy"
+              selected={selectedDate}
+              onChange={date => handleDateChange(date)}
+              customInput={<CustomInput />}
+            ></DatePicker>
+          </div>
         </div>
 
         <table className="table">
