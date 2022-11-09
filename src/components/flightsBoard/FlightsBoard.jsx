@@ -11,18 +11,18 @@ import {
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useSessionStorage } from 'usehooks-ts';
 
 const FlightsBoard = ({ getFlightsData, arrivalsList, departuresList }) => {
-  const [departuresSelected, changeSelected] = useState(true);
-  const [selectedDate, setDate] = useState(new Date());
+  const [departuresSelected, changeSelected] = useSessionStorage(
+    'departures',
+    true,
+  );
+  const [selectedDate, setDate] = useSessionStorage('test', new Date());
 
   useEffect(() => {
     getFlightsData(moment(selectedDate).format('D-MM-YYYY'));
   }, [selectedDate]);
-
-  const handleDateChange = date => {
-    setDate(date);
-  };
 
   const noFlights = (
     <tr>
@@ -76,8 +76,8 @@ const FlightsBoard = ({ getFlightsData, arrivalsList, departuresList }) => {
           <div className="date__container">
             <DatePicker
               dateFormat="dd/MM/yyyy"
-              selected={selectedDate}
-              onChange={date => handleDateChange(date)}
+              selected={new Date(selectedDate)}
+              onChange={date => setDate(date)}
               customInput={<CustomInput />}
             ></DatePicker>
           </div>
