@@ -1,7 +1,8 @@
-import { FLIGHTS_DATA_RECEIVED } from './flights.actions.js';
+import { FLIGHTS_DATA_RECEIVED, SEARCH_FLIGHTS } from './flights.actions.js';
 
 const initState = {
   flightsData: [],
+  filterText: '',
 };
 
 const flightsReducer = (state = initState, action) => {
@@ -12,6 +13,12 @@ const flightsReducer = (state = initState, action) => {
         flightsData: action.payload,
       };
     }
+
+    case SEARCH_FLIGHTS:
+      return {
+        ...state,
+        filterText: action.payload,
+      };
 
     default:
       return state;

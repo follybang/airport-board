@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './searchFlight.scss';
+import { searchFlights } from '../../flights.actions.js';
+import { connect } from 'react-redux';
 
-const SearchFlight = () => {
+const SearchFlight = ({ searchFlights }) => {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = e => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <div className="search-flight">
       <h1 className="search-flight__title">SEARCH FLIGHT</h1>
@@ -16,11 +24,22 @@ const SearchFlight = () => {
           type="text"
           placeholder="Flight #"
           className="search-block__input"
+          value={inputValue}
+          onChange={handleInputChange}
         />
-        <button className="search-block__btn">SEARCH</button>
+        <button
+          onClick={() => searchFlights(inputValue)}
+          className="search-block__btn"
+        >
+          SEARCH
+        </button>
       </div>
     </div>
   );
 };
 
-export default SearchFlight;
+const mapDispatch = {
+  searchFlights,
+};
+
+export default connect(null, mapDispatch)(SearchFlight);
