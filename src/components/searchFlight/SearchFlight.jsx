@@ -10,6 +10,12 @@ const SearchFlight = ({ searchFlights }) => {
     setInputValue(e.target.value);
   };
 
+  const handleReturnKey = e => {
+    if (e.keyCode === 13) {
+      searchFlights(inputValue);
+    }
+  };
+
   return (
     <div className="search-flight">
       <h1 className="search-flight__title">SEARCH FLIGHT</h1>
@@ -26,6 +32,7 @@ const SearchFlight = ({ searchFlights }) => {
           className="search-block__input"
           value={inputValue}
           onChange={handleInputChange}
+          onKeyDown={handleReturnKey}
         />
         <button
           onClick={() => searchFlights(inputValue)}
